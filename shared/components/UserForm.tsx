@@ -100,27 +100,27 @@ export default function UserForm() {
                 );
               }}
             />
-            {/* <FormField
-          control={form.control}
-          name="file"
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>File</FormLabel>
-                <FormControl>
-                  <Input
-                    type="file"
-                    placeholder="Choose file"
-                    onChange={(e) => {
-                      form.setValue("file", e.target.files[0]);
-                    }}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        /> */}
+            <FormField
+              control={form.control}
+              name="file"
+              render={({ field }) => {
+                return (
+                  <FormItem>
+                    <FormLabel>File</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="file"
+                        placeholder="Choose file"
+                        onChange={(e) => {
+                          form.setValue("file", e.target.files[0]);
+                        }}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
             <Button type="submit">Submit</Button>
           </form>
         </Form>

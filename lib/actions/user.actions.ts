@@ -9,7 +9,7 @@ interface CreateUserParams {
   name: string;
   email: string;
   phone: string;
-  //   picture: string;
+  file: File;
 }
 export async function createUser(userData: CreateUserParams) {
   try {
