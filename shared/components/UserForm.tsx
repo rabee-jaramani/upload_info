@@ -18,7 +18,8 @@ import { z } from "zod";
 const formSchema = z.object({
   name: z.string().min(2).max(50),
   email: z.string().email(),
-  phone: z.string().regex(/^05\d{8}$/), // UAE phone number format
+  phone: z.string().regex(/^05\d{8}$/),
+  file: z.object(),
   //   file: z
   //     .object({
   //       name: z.string(),
@@ -38,6 +39,7 @@ export default function UserForm() {
     resolver: zodResolver(formSchema),
   });
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    console.log("data", data);
     try {
       const user = await createUser(data);
       if (user) {
@@ -106,13 +108,14 @@ export default function UserForm() {
               render={({ field }) => {
                 return (
                   <FormItem>
-                    <FormLabel>File</FormLabel>
+                    <FormLabel>Image</FormLabel>
                     <FormControl>
                       <Input
                         type="file"
-                        placeholder="Choose file"
+                        accept="image/*"
                         onChange={(e) => {
-                          form.setValue("file", e.target.files[0]);
+                          console.log("e.target.files[0] ", e.target.files[0]);
+                          field.onChange(e.target.files[0]);
                         }}
                       />
                     </FormControl>
